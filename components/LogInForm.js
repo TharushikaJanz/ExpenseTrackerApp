@@ -32,7 +32,7 @@ const LogInForm = ({ navigation }) => {
 
   const handleForgotPassword = () => {
     setUsername("email.example@gmail.com");
-    setPassword("defaultPassword");
+    setPassword("default");
     setIsButtonDisabled(false);
   };
 
@@ -116,21 +116,27 @@ function FormInput(props) {
     setIsFocused(false);
   };
 
+  const handleChangeText = (text) => {
+    onChangeText(text);
+  };
+
+  const shouldShowLabel = isFocused || value !== "";
+
   return (
     <XStack alignItems="center">
       <Input
         flex={1}
-        placeholder={isFocused ? "" : placeholder}
+        placeholder={shouldShowLabel ? "" : placeholder}
         textContentType={type}
         size={50}
         padding="$3"
         value={value}
-        onChangeText={onChangeText}
+        onChangeText={handleChangeText}
         secureTextEntry={secureTextEntry}
         onFocus={handleFocus}
         onBlur={handleBlur}
       />
-      {isFocused && (
+      {shouldShowLabel && (
         <View style={styles.labelContainer}>
           <Text style={styles.label}>{label}</Text>
         </View>
