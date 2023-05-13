@@ -12,8 +12,7 @@ export default function Home() {
       screenOptions={{
         headerStyle: {
           backgroundColor: "#fff"
-        },
-        headerTintColor: "#000"
+        }
       }}
     >
       <Stack.Screen

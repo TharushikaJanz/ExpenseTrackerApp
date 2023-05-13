@@ -7,6 +7,7 @@ const LogInForm = ({ navigation }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [isButtonDisabled, setIsButtonDisabled] = useState(true);
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
   const handleSignIn = () => {
     navigation.navigate("AppPage");
@@ -36,6 +37,10 @@ const LogInForm = ({ navigation }) => {
     setIsButtonDisabled(false);
   };
 
+  const togglePasswordVisibility = () => {
+    setIsPasswordVisible((prevValue) => !prevValue);
+  };
+
   return (
     <Form
       minWidth={300}
@@ -54,8 +59,10 @@ const LogInForm = ({ navigation }) => {
         type={"password"}
         value={password}
         onChangeText={handlePasswordChange}
-        secureTextEntry={true}
+        secureTextEntry={!isPasswordVisible}
         label={"Password"}
+        showEyeIcon={true}
+        onEyeIconPress={togglePasswordVisibility}
       />
       <TouchableOpacity onPress={handleForgotPassword}>
         <Text style={styles.forgotText}>Forgot your password?</Text>
@@ -104,8 +111,16 @@ const LogInForm = ({ navigation }) => {
 export default LogInForm;
 
 function FormInput(props) {
-  const { placeholder, type, value, onChangeText, secureTextEntry, label } =
-    props;
+  const {
+    placeholder,
+    type,
+    value,
+    onChangeText,
+    secureTextEntry,
+    label,
+    showEyeIcon,
+    onEyeIconPress
+  } = props;
   const [isFocused, setIsFocused] = useState(false);
 
   const handleFocus = () => {
@@ -140,6 +155,17 @@ function FormInput(props) {
         <View style={styles.labelContainer}>
           <Text style={styles.label}>{label}</Text>
         </View>
+      )}
+      {showEyeIcon && (
+        <TouchableOpacity
+          style={styles.eyeIconContainer}
+          onPress={onEyeIconPress}
+        >
+          <Eye
+            size={20}
+            color="#686777"
+          />
+        </TouchableOpacity>
       )}
     </XStack>
   );
