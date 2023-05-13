@@ -1,41 +1,54 @@
-import React, { useState } from "react";
-import { StyleSheet, Text, TouchableOpacity } from "react-native";
-import DateTimePicker from "@react-native-community/datetimepicker";
+import React from "react";
+import { StyleSheet } from "react-native";
+import { PlusCircle } from "@tamagui/lucide-icons";
+import { Button, XStack, YStack } from "tamagui";
 
 import { MyStack } from "../MyStack";
 
+import DatePicker from "./sub-components/DatePicker";
+import ExpensesList from "./sub-components/ExpensesList";
+import { dataList1, dataList2 } from "./sub-components/Lists";
+import Summary from "./sub-components/Summary";
+
 const AppPage = ({ navigation }) => {
-  const [showPicker, setShowPicker] = useState(false);
-  const [selectedDate, setSelectedDate] = useState(new Date());
-
-  const handleShowPicker = () => {
-    setShowPicker(true);
+  const handleAddNew = () => {
+    navigation.navigate("SelectCategory");
   };
-
-  const handleDateChange = (event, date) => {
-    setShowPicker(false);
-    if (date) {
-      setSelectedDate(date);
-    }
-  };
-
   return (
     <MyStack>
-      <TouchableOpacity onPress={handleShowPicker}>
-        <Text>Select Date</Text>
-      </TouchableOpacity>
-      {showPicker && (
-        <DateTimePicker
-          value={selectedDate}
-          mode="date"
-          display="default"
-          onChange={handleDateChange}
-        />
-      )}
+      <YStack>
+        <DatePicker />
+        <Summary />
+        <ExpensesList dataList={dataList1} />
+        <ExpensesList dataList={dataList2} />
+        <XStack
+          space="$2"
+          alignSelf="center"
+        >
+          <Button
+            title="Submit"
+            style={styles.button}
+            color={"#FFFFFF"}
+            fontWeight={"500"}
+            borderRadius={25}
+            fontSize={16}
+            icon={PlusCircle}
+            scaleIcon={1.5}
+            onPress={handleAddNew}
+          >
+            Add new
+          </Button>
+        </XStack>
+      </YStack>
     </MyStack>
   );
 };
 
 export default AppPage;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  button: {
+    bottom: -15,
+    backgroundColor: "#007BEF"
+  }
+});

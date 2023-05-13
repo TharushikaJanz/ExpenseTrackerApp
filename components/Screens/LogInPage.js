@@ -2,8 +2,9 @@ import React from "react";
 import { StyleSheet, Text } from "react-native";
 import { YStack } from "tamagui";
 
-import LogInForm from "../LogInForm";
 import { MyStack } from "../MyStack";
+
+import LogInForm from "./sub-components/LogInForm";
 
 export default function LogInPage({ navigation }) {
   return (

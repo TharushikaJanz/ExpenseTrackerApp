@@ -96,7 +96,7 @@ const LogInForm = ({ navigation }) => {
           size={50}
           onPress={handleSignIn}
           backgroundColor={isButtonDisabled ? "#E2E3E4" : "#554AF0"}
-          color={isButtonDisabled ? "#FFFFFF" : "#FFFFFF"}
+          color={"#FFFFFF"}
           fontWeight={"500"}
           fontSize={16}
           disabled={isButtonDisabled}
