@@ -4,6 +4,7 @@ import { ChevronLeft } from "@tamagui/lucide-icons";
 import AddNewPage from "../components/Screens/AddNewPage";
 import AppPage from "../components/Screens/AppPage";
 import LogInPage from "../components/Screens/LogInPage";
+import SearchIcon from "../components/Screens/sub-components/SearchIcon";
 
 const Stack = createStackNavigator();
 
@@ -25,7 +26,11 @@ export default function Home() {
       <Stack.Screen
         name="AppPage"
         component={AppPage}
-        options={{ title: "App", headerLeft: null }}
+        options={{
+          title: "App",
+          headerLeft: null,
+          headerRight: () => <SearchIcon />
+        }}
       />
       <Stack.Screen
         name="SelectCategory"
