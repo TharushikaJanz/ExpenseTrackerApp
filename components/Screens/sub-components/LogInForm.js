@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import { Eye } from "@tamagui/lucide-icons";
-import { Button, Form, Input, XStack } from "tamagui";
+import { StyleSheet, Text, TouchableOpacity } from "react-native";
+import { Button, Form, XStack } from "tamagui";
+
+import FormInput from "./FormInput";
 
 const LogInForm = ({ navigation }) => {
   const [username, setUsername] = useState("");
@@ -53,6 +54,7 @@ const LogInForm = ({ navigation }) => {
         value={username}
         onChangeText={handleUsernameChange}
         label={"Email"}
+        labelColor={"#686777"}
       />
       <FormInput
         placeholder={"Password"}
@@ -63,6 +65,7 @@ const LogInForm = ({ navigation }) => {
         label={"Password"}
         showEyeIcon={true}
         onEyeIconPress={togglePasswordVisibility}
+        labelColor={"#686777"}
       />
       <TouchableOpacity onPress={handleForgotPassword}>
         <Text style={styles.forgotText}>Forgot your password?</Text>
@@ -110,88 +113,11 @@ const LogInForm = ({ navigation }) => {
 
 export default LogInForm;
 
-function FormInput(props) {
-  const {
-    placeholder,
-    type,
-    value,
-    onChangeText,
-    secureTextEntry,
-    label,
-    showEyeIcon,
-    onEyeIconPress
-  } = props;
-  const [isFocused, setIsFocused] = useState(false);
-
-  const handleFocus = () => {
-    setIsFocused(true);
-  };
-
-  const handleBlur = () => {
-    setIsFocused(false);
-  };
-
-  const handleChangeText = (text) => {
-    onChangeText(text);
-  };
-
-  const shouldShowLabel = isFocused || value !== "";
-
-  return (
-    <XStack alignItems="center">
-      <Input
-        flex={1}
-        placeholder={shouldShowLabel ? "" : placeholder}
-        textContentType={type}
-        size={50}
-        padding="$3"
-        value={value}
-        onChangeText={handleChangeText}
-        secureTextEntry={secureTextEntry}
-        onFocus={handleFocus}
-        onBlur={handleBlur}
-      />
-      {shouldShowLabel && (
-        <View style={styles.labelContainer}>
-          <Text style={styles.label}>{label}</Text>
-        </View>
-      )}
-      {showEyeIcon && (
-        <TouchableOpacity
-          style={styles.eyeIconContainer}
-          onPress={onEyeIconPress}
-        >
-          <Eye
-            size={20}
-            color="#686777"
-          />
-        </TouchableOpacity>
-      )}
-    </XStack>
-  );
-}
-
 const styles = StyleSheet.create({
   forgotText: {
     color: "#554AF0",
     textAlign: "left",
     fontWeight: "600",
     fontSize: 14
-  },
-  eyeIconContainer: {
-    position: "absolute",
-    right: 10,
-    top: 14
-  },
-  labelContainer: {
-    position: "absolute",
-    top: -8,
-    left: 10,
-    backgroundColor: "#fff",
-    paddingHorizontal: 5
-  },
-  label: {
-    fontSize: 12,
-    color: "#686777"
   }
 });

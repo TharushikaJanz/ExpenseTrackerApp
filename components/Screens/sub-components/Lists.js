@@ -44,3 +44,42 @@ export const dataList2 = [
     image: require("./../../../assets/Laundry.png")
   }
 ];
+
+export const images = [
+  {
+    label: "Groceries",
+    path: require("./../../../assets/Groceries.png")
+  },
+  {
+    label: "Gifts",
+    path: require("./../../../assets/Gifts.png")
+  },
+  {
+    label: "Bar & Cafe",
+    path: require("./../../../assets/Cafe.png")
+  },
+  {
+    label: "Health",
+    path: require("./../../../assets/Health.png")
+  },
+  {
+    label: "Commute",
+    path: require("./../../../assets/Transportation.png")
+  },
+  {
+    label: "Electronics",
+    path: require("./../../../assets/Electronics.png")
+  },
+  {
+    label: "Laundry",
+    path: require("./../../../assets/Laundry.png")
+  },
+  {
+    label: "Liquor",
+    path: require("./../../../assets/Liquor.png")
+  },
+  {
+    label: "Restaurant",
+    path: require("./../../../assets/Restaurant.png")
+  }
+];

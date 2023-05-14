@@ -1,9 +1,9 @@
 import { createStackNavigator } from "@react-navigation/stack";
 import { ChevronLeft } from "@tamagui/lucide-icons";
 
+import AddNewPage from "../components/Screens/AddNewPage";
 import AppPage from "../components/Screens/AppPage";
 import LogInPage from "../components/Screens/LogInPage";
-import SelectCategory from "../components/Screens/SelectCategory";
 
 const Stack = createStackNavigator();
 
@@ -29,7 +29,7 @@ export default function Home() {
       />
       <Stack.Screen
         name="SelectCategory"
-        component={SelectCategory}
+        component={AddNewPage}
         options={{
           title: null
           // headerLeft: null
